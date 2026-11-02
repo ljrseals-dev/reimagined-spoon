@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Logs & runtime
+logs/
+*.jsonl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API keys / secrets
+.env
+.env.local
+*.key
+
+# Full manuscript index (regenerate from manuscript.md)
+corpus/index.json
+manuscript.md

@@ -1,0 +1,33 @@
+# Model notes
+
+The harness is deliberately model-agnostic.
+
+## Recommended starting points (late 2026)
+
+- Anthropic Claude Sonnet / Opus — strong at following the JSON contract and citation discipline
+- OpenAI GPT-4o / o-series — good tool-calling if you wire resolve_citation as a real tool
+- Google Gemini 1.5 / 2.x — long context, solid instruction following
+- Open-weight models (Llama 3.1 70B+, Mixtral, Qwen2.5, etc.) — use the *detailed* prompt
+
+## Two prompt files
+
+| File | Use when |
+|------|----------|
+| `critic.v1.0.md` | Running inside the Python harness (`src/loop.py`, `src/critic.py`) |
+| `critic.v1.0.detailed.md` | Dropping the Critic into any chat UI, playground, or custom agent that has no harness |
+
+The detailed prompt already contains:
+
+- Full axis scoring tables
+- Complete scaffolds for all six levels
+- Explicit instructions for tool calling *and* for environments without tools
+- Pre-check rules
+- Exact JSON schema
+
+Just paste it into the system / instruction field of any LLM.
+
+## FixtureModel
+
+The `FixtureModel` that ships with the suite is *not* a real model.
+It exists solely so the validator, repair loop and metrics can be exercised
+with zero API cost and deterministic outputs.
