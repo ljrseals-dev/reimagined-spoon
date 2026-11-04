@@ -1,0 +1,23 @@
+oid_section = new_oids
+
+[ new_oids ]
+tsa_policy1 = 1.2.3.4.1
+
+[ tsa ]
+default_tsa = tsa_config
+
+[ tsa_config ]
+dir = .
+serial = tsa_serial
+crypto_device = builtin
+signer_cert = tsa_cert.pem
+certs = tsa_cert.pem
+signer_key = tsa_key.pem
+signer_digest = sha256
+default_policy = tsa_policy1
+other_policies = tsa_policy1
+digests = sha256
+accuracy = secs:1
+ordering = yes
+tsa_name = yes
+ess_cert_id_chain = no

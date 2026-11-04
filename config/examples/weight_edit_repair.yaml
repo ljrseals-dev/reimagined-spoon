@@ -1,0 +1,29 @@
+# London Fog + ARTIFACT — example config (parameterized endpoints)
+# Replace model ids with whatever your runtime actually exposes.
+# Do not treat names below as verified product claims.
+
+target_model:
+  path: "${TARGET_MODEL_PATH}"   # local checkout or hub id
+  revision: "main"
+
+reasoning_agent:
+  endpoint: "${REASONING_API_BASE}"
+  model: "${REASONING_MODEL}"     # e.g. whatever model you use for mechanistic hypothesis
+
+code_specialist:
+  endpoint: "${CODE_API_BASE}"
+  model: "${CODE_MODEL}"          # e.g. specialist for harness scripts / probes
+
+weight_budget:
+  max_fraction: 0.001            # ≤ 0.1%
+  human_gate_above: 0.0005       # four-eyes above 0.05%
+
+tsa:
+  quorum: 2
+  # registry entries supplied at runtime / secrets; see anchoring/tsa/policy.py
+
+tlog:
+  # base_url resolved via signing-config / TUF in production — do not hard-code only
+
+sparsity_invariant: true
+rSI_abort_on_self_modify: true

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "london-fog"
+version = "0.0.1"
+description = "London Fog: auditable, sparse neural weight-edit governance scaffold (dual-TSA + Rekor v2 tlog + monitor)"
+requires-python = ">=3.10"
+dependencies = [
+    "cryptography>=42",
+    "rfc8785>=0.1.4",   # RFC 8785 JCS; required in production (Phase 0 adds a fail-closed integer-only shim for sandboxes only)
+    "pyyaml>=6",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["anchoring*"]
+namespaces = true   # anchoring/tsa, tlog, monitor have no __init__.py
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+xfail_strict = true

@@ -1,0 +1,4 @@
+# DEPRECATED filename — kept only so old scripts fail loudly with a pointer.
+# Use: config/examples/weight_edit_repair.yaml
+# Model endpoint names are parameterized there; do not hard-code unverified products.
+error: "Rename to weight_edit_repair.yaml; see that file for parameterized endpoints."
